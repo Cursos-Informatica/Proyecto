@@ -1,0 +1,27 @@
+name: buil and test feature branch
+on:
+  push:
+    branches:
+      - feature/*
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: pull and checkout from git repository
+        run: |
+          echo "Pulling and checking out from the repository"
+      
+      - name: set node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: install npm packages
+        run: npm install
+
+      - name: install latest angular app
+        run: |
+          ng test --watch= false
+          ng build 
+          echo  "Run test and build angular app"
