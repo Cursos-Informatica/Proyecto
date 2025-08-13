@@ -22,6 +22,6 @@ jobs:
 
       - name: install latest angular app
         run: |
-          ng test --watch= false
+          ng test --watch=false
           ng build 
           echo  "Run test and build angular app"
