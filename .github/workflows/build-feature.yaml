@@ -8,19 +8,22 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: pull and checkout from git repository
-        run: |
-          echo "Pulling and checking out from the repository"
+        run: echo "Pulling and checking out from the repository"
       
-      - name: set node 18
+      - name: set node 20.19
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20.19'
 
       - name: install npm packages
+        run: npm install
+        
+      - name: install latest angular version
         run: npm install -g @angular/cli@latest
 
-      - name: install latest angular app
+      - name: run test and build angular app
         run: |
           ng test --watch=false
           ng build 
